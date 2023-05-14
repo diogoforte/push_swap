@@ -19,7 +19,6 @@ int check_input(char **av)
 	{
 		if(!check_num(*av))
 			return (0);
-		printf("av = %s\n", *av);
 		av++;
 	}
 	return (1);
@@ -29,6 +28,8 @@ int check_num(char *av)
 {
 	while (*av)
 	{
+		if (av[0] == 45)
+			av++;
 		if(*av < 48 || *av > 57)
 			return (0);
 		av++;
@@ -36,7 +37,22 @@ int check_num(char *av)
 	return (1);
 }
 
-void	error(t_stack **stack_a, t_stack **stack_b)
+void	free_stack(stack **lst)
+{
+	stack	*tmp;
+
+	if (!lst || !(*lst))
+		return ;
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		free(*lst);
+		*lst = tmp;
+	}
+	*lst = NULL;
+}
+
+void	error(stack **stack_a, stack **stack_b)
 {
 	if (stack_a == 0 || *stack_a != 0)
 		free_stack(stack_a);
@@ -46,20 +62,22 @@ void	error(t_stack **stack_a, t_stack **stack_b)
 	exit (1);
 }
 
-void	ft_lstclear(stack **stack)
+void	ft_lstclear(stack **lst)
 {
-	stack	*tmp;
+	stack *tmp;
 
-	if (!stack || !(*stack))
+	if (!lst || !(*lst))
 		return ;
-	while (*stack)
+	while (*lst)
 	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = tmp;
+		tmp = (*lst)->next;
+		free(*lst);
+		*lst = tmp;
 	}
-	*stack = NULL;
+	*lst = NULL;
 }
+
+
 
 int	ft_atoi(char *str)
 {

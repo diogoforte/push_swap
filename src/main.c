@@ -12,17 +12,6 @@
 
 #include "push_swap.h"
 
-void	ft_lstiter(stack *stack)
-{
-	if (!stack)
-		return ;
-	while (stack)
-	{
-		printf("%d\n", stack->value);
-		stack = stack->next;
-	}
-}
-
 int	main(int ac, char **av)
 {
 	stack	*stack_a;
@@ -31,6 +20,6 @@ int	main(int ac, char **av)
 		return (0);
 	stack_b = NULL;
 	stack_a = fill_stack_values(ac, av);
-	ft_lstiter(stack_a);
-	ft_lstiter(stack_b);
+	stack_index(stack_a);
+	stack_index(stack_b);
 }

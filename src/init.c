@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
 stack	*fill_stack_values(int ac, char **av)
 {
-	t_stack		*stack_a;
+	stack		*stack_a;
 	long int	nb;
 	int			i;
 
@@ -23,9 +25,9 @@ stack	*fill_stack_values(int ac, char **av)
 	{
 		nb = ft_atoi(av[i]);
 		if (nb > INT_MAX || nb < INT_MIN)
-			exit_error(&stack_a, 0);
+			error(&stack_a, 0);
 		if (i == 1)
-			stack_a = ft_lstnew((int)nb);
+			stack_a = ft_lstnew(nb);
 		else
 			ft_lstadd_back(&stack_a, ft_lstnew((int)nb));
 		i++;
@@ -33,11 +35,11 @@ stack	*fill_stack_values(int ac, char **av)
 	return (stack_a);
 }
 
-stack	*ft_lstnew(void *content)
+stack	*ft_lstnew(int content)
 {
 	stack	*result;
 
-	result = malloc(sizeof(stack));
+	result = malloc(sizeof * result);
 	if (!result)
 		return (NULL);
 	result->value = content;
@@ -68,4 +70,19 @@ stack	*ft_lstlast(stack *lst)
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
+}
+
+void	stack_index(stack *stack)
+{
+	int i;
+
+	i = 0;
+	if (!stack)
+		return ;
+	while (stack)
+	{
+		stack->index = ++i;
+		printf("index = %d value = %d\n", stack->index, stack->value);
+		stack = stack->next;
+	}
 }

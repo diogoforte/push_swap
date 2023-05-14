@@ -23,7 +23,7 @@ typedef struct s_stack
 {
 	int				value;
 	int				index;
-	struct stack	*next;
+	struct s_stack	*next;
 }	stack;
 
 int check_input(char **av);
@@ -31,10 +31,11 @@ int check_num(char *av);
 int	ft_atoi(char *str);
 void	ft_lstclear(stack **stack);
 stack	*fill_stack_values(int ac, char **av);
-stack	*ft_lstnew(void *content);
+stack	*ft_lstnew(int content);
 void	ft_lstadd_back(stack **lst, stack *new);
 stack	*ft_lstlast(stack *lst);
-void	ft_lstiter(stack *lst);
-
+void	free_stack(stack **stack);
+void	error(stack **stack_a, stack **stack_b);
+void	stack_index(stack *stack);
 
 #endif
