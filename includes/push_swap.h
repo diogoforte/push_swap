@@ -26,8 +26,9 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	stack;
 
-int check_input(char **av);
+int check_input(int ac, char **av);
 int check_num(char *av);
+int check_duplicates(int ac, char **av);
 int	ft_atoi(char *str);
 void	ft_lstclear(stack **stack);
 stack	*fill_stack_values(int ac, char **av);
@@ -36,6 +37,10 @@ void	ft_lstadd_back(stack **lst, stack *new);
 stack	*ft_lstlast(stack *lst);
 void	free_stack(stack **stack);
 void	error(stack **stack_a, stack **stack_b);
-void	stack_index(stack *stack);
+int	stack_index(stack *stack);
+
+
+void bubbleSort(stack *start);
+void swap(stack *a, stack *b);
 
 #endif

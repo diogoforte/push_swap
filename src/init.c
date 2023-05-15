@@ -72,17 +72,18 @@ stack	*ft_lstlast(stack *lst)
 	return (lst);
 }
 
-void	stack_index(stack *stack)
+int	stack_index(stack *stack)
 {
 	int i;
 
 	i = 0;
 	if (!stack)
-		return ;
+		return (0);
 	while (stack)
 	{
-		stack->index = ++i;
-		printf("index = %d value = %d\n", stack->index, stack->value);
+		printf("%d\n", stack->value);
+		i++;
 		stack = stack->next;
 	}
+	return (i);
 }

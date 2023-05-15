@@ -24,7 +24,8 @@ INC			=	-I ./includes/
 SRC_PATH	=	src/
 SRC			=	main.c \
 				utils.c \
-				init.c
+				init.c	\
+				test.c
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 
 # Objects
