@@ -72,7 +72,16 @@ stack	*ft_lstlast(stack *lst)
 	return (lst);
 }
 
-int	stack_index(stack *stack)
+stack	*ft_lstbeforelast(stack *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next->next)
+		lst = lst->next;
+	return (lst);
+}
+
+int	stack_size(stack *stack)
 {
 	int i;
 
@@ -81,9 +90,35 @@ int	stack_index(stack *stack)
 		return (0);
 	while (stack)
 	{
-		printf("%d\n", stack->value);
 		i++;
 		stack = stack->next;
 	}
 	return (i);
+}
+
+void	assign_index(stack *stack_a, int stack_size)
+{
+	stack	*ptr;
+	stack	*highest;
+	long int		value;
+
+	while (--stack_size > 0)
+	{
+		ptr = stack_a;
+		value = -2147483649;
+		highest = NULL;
+		while (ptr)
+		{
+			if (ptr->value > value && ptr->index == 0)
+			{
+				value = ptr->value;
+				highest = ptr;
+				ptr = stack_a;
+			}
+			else
+				ptr = ptr->next;
+		}
+		if (highest != NULL)
+			highest->index = stack_size;
+	}
 }

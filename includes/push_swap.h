@@ -35,12 +35,28 @@ stack	*fill_stack_values(int ac, char **av);
 stack	*ft_lstnew(int content);
 void	ft_lstadd_back(stack **lst, stack *new);
 stack	*ft_lstlast(stack *lst);
+stack	*ft_lstbeforelast(stack *lst);
 void	free_stack(stack **stack);
 void	error(stack **stack_a, stack **stack_b);
-int	stack_index(stack *stack);
+int	stack_size(stack *stack);
+void	assign_index(stack *stack_a, int stack_size);
+int is_sorted(stack *stack);
 
+void	push(stack **src, stack **dest);
+void	pa(stack **stack_a, stack **stack_b);
+void	pb(stack **stack_a, stack **stack_b);
+void	rev_rotate(stack **stack);
+void	rra(stack **stack_a);
+void	rrb(stack **stack_b);
+void	rrr(stack **stack_a, stack **stack_b);
+void	rotate(stack **stack);
+void	ra(stack **stack_a);
+void	rb(stack **stack_b);
+void	rr(stack **stack_a, stack **stack_b);
+void	swap(stack *stack);
+void	sa(stack **stack_a);
+void	sb(stack **stack_b);
+void	ss(stack **stack_a, stack **stack_b);
 
-void bubbleSort(stack *start);
-void swap(stack *a, stack *b);
-
+void	printstack(stack *stack);
 #endif

@@ -22,10 +22,15 @@ INC			=	-I ./includes/
 
 # Sources
 SRC_PATH	=	src/
-SRC			=	main.c \
-				utils.c \
-				init.c	\
-				test.c
+SRC			=	main.c				\
+				utils.c				\
+				init.c				\
+				push.c				\
+				reverse_rotate.c	\
+				rotate.c			\
+				swap.c				\
+				sort.c				\
+
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 
 # Objects
