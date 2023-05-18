@@ -16,23 +16,27 @@ int	getmaxbits(t_stack *stack_a)
 {
 	int		maxbits;
 	int		maxnum;
+	int		maxbitshold;
 	t_stack	*temp;
 
-	maxbits = 0;
-	maxnum = 0;
+	maxbitshold = 0;
 	temp = stack_a;
 	while (temp)
 	{
-		if (temp->value > maxnum)
-			maxnum = temp->value;
+		maxnum = absolute(temp->value);
+		maxbits = 0;
+		while (maxnum)
+		{
+			maxbits++;
+			maxnum >>= 1;
+		}
+		if (temp->value < 0)
+			maxbits++;
+		if (maxbitshold < maxbits)
+			maxbitshold = maxbits;
 		temp = temp->next;
 	}
-	while (maxnum)
-	{
-		maxbits++;
-		maxnum >>= 1;
-	}
-	return (maxbits);
+	return (maxbitshold);
 }
 
 void	radix(t_stack **stack_a, t_stack **stack_b)
@@ -60,4 +64,34 @@ void	radix(t_stack **stack_a, t_stack **stack_b)
 			pa(stack_a, stack_b);
 		bit++;
 	}
+}
+
+void	push_negatives_to_top(t_stack **stack_a)
+{
+	t_stack		*temp;
+	int			rotations;
+	int			min_negative;
+
+	temp = *stack_a;
+	rotations = 0;
+	min_negative = 0;
+	while (temp)
+	{
+		if (temp->value < 0 && temp->value < min_negative)
+		{
+			min_negative = temp->value;
+			break ;
+		}
+		rotations++;
+		temp = temp->next;
+	}
+	while (rotations--)
+		ra(stack_a);
+}
+
+int	absolute(int n)
+{
+	if (n < 0)
+		return (-n);
+	return (n);
 }

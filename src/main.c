@@ -28,7 +28,11 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 	if (stack_size == 2 && is_sorted(*stack_a))
 		sa(stack_a);
 	else if (stack_size > 2 && is_sorted(*stack_a))
+	{
 		radix(stack_a, stack_b);
+		if (is_sorted(*stack_a))
+			push_negatives_to_top(stack_a);
+	}
 }
 
 int	main(int ac, char **av)

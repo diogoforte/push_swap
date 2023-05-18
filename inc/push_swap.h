@@ -22,6 +22,7 @@
 typedef struct s_stack
 {
 	int				value;
+	int				is_negative;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -57,4 +58,7 @@ void			sb(t_stack **stack_b);
 void			ss(t_stack **stack_a, t_stack **stack_b);
 void			radix(t_stack **stack_a, t_stack **stack_b);
 int				getmaxbits(t_stack *stack_a);
+void			push_negatives_to_top(t_stack **stack_a);
+void			push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size);
+int				absolute(int n);
 #endif
