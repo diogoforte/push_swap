@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-void	rev_rotate(stack **stack)
+void	rev_rotate(t_stack **stack)
 {
-	struct s_stack	*tmp;
-	struct s_stack	*tail;
-	struct s_stack	*before_tail;
+	t_stack	*tmp;
+	t_stack	*tail;
+	t_stack	*before_tail;
 
 	tail = ft_lstlast(*stack);
 	before_tail = ft_lstbeforelast(*stack);
@@ -26,19 +26,19 @@ void	rev_rotate(stack **stack)
 	before_tail->next = NULL;
 }
 
-void	rra(stack **stack_a)
+void	rra(t_stack **stack_a)
 {
 	rev_rotate(stack_a);
 	write(1, "rra\n", 3);
 }
 
-void	rrb(stack **stack_b)
+void	rrb(t_stack **stack_b)
 {
 	rev_rotate(stack_b);
 	write(1, "rrb\n", 3);
 }
 
-void	rrr(stack **stack_a, stack **stack_b)
+void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	rev_rotate(stack_a);
 	rev_rotate(stack_b);

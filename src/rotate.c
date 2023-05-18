@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-void	rotate(stack **stack)
+void	rotate(t_stack **stack)
 {
-	struct s_stack	*tmp;
-	struct s_stack	*tail;
+	t_stack	*tmp;
+	t_stack	*tail;
 
 	tmp = *stack;
 	*stack = (*stack)->next;
@@ -24,19 +24,19 @@ void	rotate(stack **stack)
 	tail->next = tmp;
 }
 
-void	ra(stack **stack_a)
+void	ra(t_stack **stack_a)
 {
 	rotate(stack_a);
 	write(1, "ra\n", 3);
 }
 
-void	rb(stack **stack_b)
+void	rb(t_stack **stack_b)
 {
 	rotate(stack_b);
 	write(1, "rb\n", 3);
 }
 
-void	rr(stack **stack_a, stack **stack_b)
+void	rr(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);

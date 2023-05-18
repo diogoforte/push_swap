@@ -23,41 +23,38 @@ typedef struct s_stack
 {
 	int				value;
 	struct s_stack	*next;
-}	stack;
+}	t_stack;
 
 int				check_input(int ac, char **av);
 int				check_num(char *av);
 int				check_duplicates(int ac, char **av);
 long int		ft_atoi(char *str);
-void			ft_lstclear(stack **stack);
-stack			*fill_stack_values(int ac, char **av);
-stack			*ft_lstnew(int content);
-void			ft_lstadd_back(stack **lst, stack *new);
-stack			*ft_lstlast(stack *lst);
-stack			*ft_lstbeforelast(stack *lst);
-void			free_stack(stack **stack);
-void			errorhandling(stack **stack_a, stack **stack_b);
-int				stack_size(stack *stack);
-void			assign_index(stack *stack_a, int stack_size);
-int				is_sorted(stack *stack);
-
-void			push(stack **src, stack **dest);
-void			pa(stack **stack_a, stack **stack_b);
-void			pb(stack **stack_a, stack **stack_b);
-void			rev_rotate(stack **stack);
-void			rra(stack **stack_a);
-void			rrb(stack **stack_b);
-void			rrr(stack **stack_a, stack **stack_b);
-void			rotate(stack **stack);
-void			ra(stack **stack_a);
-void			rb(stack **stack_b);
-void			rr(stack **stack_a, stack **stack_b);
-void			swap(stack *stack);
-void			sa(stack **stack_a);
-void			sb(stack **stack_b);
-void			ss(stack **stack_a, stack **stack_b);
-
-void			radix(stack** stack_a, stack** stack_b);
-int				getmaxbits(stack* stack_a);
-
+void			ft_lstclear(t_stack **t_stack);
+t_stack			*fill_stack_values(int ac, char **av);
+t_stack			*ft_lstnew(int content);
+void			ft_lstadd_back(t_stack **lst, t_stack *new);
+t_stack			*ft_lstlast(t_stack *lst);
+t_stack			*ft_lstbeforelast(t_stack *lst);
+void			free_stack(t_stack **t_stack);
+void			errorhandling(t_stack **stack_a, t_stack **stack_b);
+int				stack_size(t_stack *t_stack);
+void			assign_index(t_stack *stack_a, int stack_size);
+int				is_sorted(t_stack *t_stack);
+void			push(t_stack **src, t_stack **dest);
+void			pa(t_stack **stack_a, t_stack **stack_b);
+void			pb(t_stack **stack_a, t_stack **stack_b);
+void			rev_rotate(t_stack **t_stack);
+void			rra(t_stack **stack_a);
+void			rrb(t_stack **stack_b);
+void			rrr(t_stack **stack_a, t_stack **stack_b);
+void			rotate(t_stack **t_stack);
+void			ra(t_stack **stack_a);
+void			rb(t_stack **stack_b);
+void			rr(t_stack **stack_a, t_stack **stack_b);
+void			swap(t_stack *t_stack);
+void			sa(t_stack **stack_a);
+void			sb(t_stack **stack_b);
+void			ss(t_stack **stack_a, t_stack **stack_b);
+void			radix(t_stack **stack_a, t_stack **stack_b);
+int				getmaxbits(t_stack *stack_a);
 #endif

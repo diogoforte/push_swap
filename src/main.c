@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	is_sorted(stack *stack)
+int	is_sorted(t_stack *stack)
 {
 	while (stack->next != NULL)
 	{
@@ -23,7 +23,7 @@ int	is_sorted(stack *stack)
 	return (0);
 }
 
-void	push_swap(stack **stack_a, stack **stack_b, int stack_size)
+void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 {
 	if (stack_size == 2 && is_sorted(*stack_a))
 		sa(stack_a);
@@ -33,8 +33,8 @@ void	push_swap(stack **stack_a, stack **stack_b, int stack_size)
 
 int	main(int ac, char **av)
 {
-	stack	*stack_a;
-	stack	*stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
 	check_input(ac, av);
 	stack_a = fill_stack_values(ac, av);

@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-int	getmaxbits(stack *stack_a)
+int	getmaxbits(t_stack *stack_a)
 {
 	int		maxbits;
 	int		maxnum;
-	stack	*temp;
+	t_stack	*temp;
 
 	maxbits = 0;
 	maxnum = 0;
@@ -35,7 +35,7 @@ int	getmaxbits(stack *stack_a)
 	return (maxbits);
 }
 
-void	radix(stack **stack_a, stack **stack_b)
+void	radix(t_stack **stack_a, t_stack **stack_b)
 {
 	int	maxbits;
 	int	bit;

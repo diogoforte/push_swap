@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-stack	*fill_stack_values(int ac, char **av)
+t_stack	*fill_stack_values(int ac, char **av)
 {
-	stack		*stack_a;
+	t_stack		*stack_a;
 	long int	nb;
 	int			i;
 
@@ -56,7 +56,7 @@ long int	ft_atoi(char *str)
 	return (res);
 }
 
-int	stack_size(stack *stack)
+int	stack_size(t_stack *stack)
 {
 	int	i;
 

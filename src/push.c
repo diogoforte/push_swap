@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-void	push(stack **src, stack **dest)
+void	push(t_stack **src, t_stack **dest)
 {
-	struct s_stack	*tmp;
+	t_stack	*tmp;
 
 	if (*src == NULL)
 		return ;
@@ -24,13 +24,13 @@ void	push(stack **src, stack **dest)
 	*src = tmp;
 }
 
-void	pa(stack **stack_a, stack **stack_b)
+void	pa(t_stack **stack_a, t_stack **stack_b)
 {
 	push(stack_b, stack_a);
 	write(1, "pa\n", 3);
 }
 
-void	pb(stack **stack_a, stack **stack_b)
+void	pb(t_stack **stack_a, t_stack **stack_b)
 {
 	push(stack_a, stack_b);
 	write(1, "pb\n", 3);

@@ -68,9 +68,9 @@ int	check_duplicates(int ac, char **av)
 	return (1);
 }
 
-void	free_stack(stack **lst)
+void	free_stack(t_stack **lst)
 {
-	stack	*tmp;
+	t_stack	*tmp;
 
 	if (!lst || !(*lst))
 		return ;
@@ -83,7 +83,7 @@ void	free_stack(stack **lst)
 	*lst = NULL;
 }
 
-void	errorhandling(stack **stack_a, stack **stack_b)
+void	errorhandling(t_stack **stack_a, t_stack **stack_b)
 {
 	free_stack(stack_a);
 	free_stack(stack_b);
