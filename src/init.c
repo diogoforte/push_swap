@@ -25,7 +25,7 @@ stack	*fill_stack_values(int ac, char **av)
 	{
 		nb = ft_atoi(av[i]);
 		if (nb > INT_MAX || nb < INT_MIN)
-			error(&stack_a, 0);
+			errorhandling(&stack_a, 0);
 		if (i == 1)
 			stack_a = ft_lstnew(nb);
 		else
@@ -35,50 +35,25 @@ stack	*fill_stack_values(int ac, char **av)
 	return (stack_a);
 }
 
-stack	*ft_lstnew(int content)
+long int	ft_atoi(char *str)
 {
-	stack	*result;
+	long int	res;
+	int	sign;
 
-	result = malloc(sizeof * result);
-	if (!result)
-		return (NULL);
-	result->value = content;
-	result->index = 0;
-	result->next = NULL;
-	return (result);
-}
-
-void	ft_lstadd_back(stack **lst, stack *new)
-{
-	stack	*temp;
-
-	if (!new)
-		return ;
-	if (!*lst)
+	res = 0;
+	sign = 1;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		*lst = new;
-		return ;
+		if (*str == '-')
+			sign *= -1;
+		str++;
 	}
-	temp = ft_lstlast(*lst);
-	temp->next = new;
-}
-
-stack	*ft_lstlast(stack *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
-
-stack	*ft_lstbeforelast(stack *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next->next)
-		lst = lst->next;
-	return (lst);
+	while (*str >= '0' && *str <= '9')
+		res = (res * 10) + (*str++ - '0');
+	res *= sign;
+	return (res);
 }
 
 int	stack_size(stack *stack)
@@ -94,31 +69,4 @@ int	stack_size(stack *stack)
 		stack = stack->next;
 	}
 	return (i);
-}
-
-void	assign_index(stack *stack_a, int stack_size)
-{
-	stack	*ptr;
-	stack	*highest;
-	long int		value;
-
-	while (--stack_size > 0)
-	{
-		ptr = stack_a;
-		value = -2147483649;
-		highest = NULL;
-		while (ptr)
-		{
-			if (ptr->value > value && ptr->index == 0)
-			{
-				value = ptr->value;
-				highest = ptr;
-				ptr = stack_a;
-			}
-			else
-				ptr = ptr->next;
-		}
-		if (highest != NULL)
-			highest->index = stack_size;
-	}
 }

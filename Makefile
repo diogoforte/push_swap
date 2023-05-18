@@ -18,18 +18,19 @@ CC		= cc
 CFLAGS	= -Werror -Wextra -Wall
 
 # Includes
-INC			=	-I ./includes/
+INC			=	-I ./inc/
 
 # Sources
 SRC_PATH	=	src/
-SRC			=	main.c				\
-				utils.c				\
-				init.c				\
-				push.c				\
-				reverse_rotate.c	\
+SRC			=	init.c				\
+				main.c				\
 				rotate.c			\
-				swap.c				\
+				input.c				\
+				push.c				\
 				sort.c				\
+				lists.c				\
+				reverse_rotate.c	\
+				swap.c				\
 
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 
@@ -49,22 +50,21 @@ $(OBJ_PATH):
 	@mkdir $(OBJ_PATH)
 
 $(NAME): $(OBJS)
-	@echo "Compiling push_swap..."
+	@echo "Compiling \033[0;91m$(NAME)..."
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(INC) -lXext -lX11 -lm
-	@echo "push_swap ready."
+	@echo "\033[0;91m$(NAME) \033[0;0mready."
 
 bonus: all
 
 clean:
-	@echo "Removing .o object files..."
+	@echo "\033[0;0mRemoving \033[0;91m.o \033[0;0mobject files..."
 	@rm -rf $(OBJ_PATH)
-	@make clean -C $(MLX_PATH)
-	@make clean -C $(LIBFT_PATH)
+	@echo "\033[0;91m.o \033[0;0mobject files removed."
 
 fclean: clean
-	@echo "Removing push_swap..."
+	@echo "\033[0;0mRemoving \033[0;91mpush_swap\033[0;0m..."
 	@rm -f $(NAME)
-	@rm -f $(LIBFT_PATH)$(LIBFT_NAME)
+	@echo "\033[0;91mpush_swap \033[0;0mfile removed."
 
 re: fclean all
 

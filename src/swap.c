@@ -21,9 +21,6 @@ void	swap(stack *stack)
 	tmp = stack->value;
 	stack->value = stack->next->value;
 	stack->next->value = tmp;
-	tmp = stack->index;
-	stack->index = stack->next->index;
-	stack->next->index = tmp;
 }
 
 void	sa(stack **stack_a)

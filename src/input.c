@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinunes- <dinunes-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 06:36:45 by dinunes-          #+#    #+#             */
-/*   Updated: 2023/05/12 06:36:45 by dinunes-         ###   ########.fr       */
+/*   Created: 2023/05/18 00:43:28 by dinunes-          #+#    #+#             */
+/*   Updated: 2023/05/18 00:43:28 by dinunes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int check_input(int ac, char **av)
 		while (*av)
 		{
 			if(!check_num(*av))
-				return (0);
+				errorhandling(0, 0);
 			av++;
 		}
 	}
@@ -58,7 +58,7 @@ int check_duplicates(int ac, char **av)
             while (av[i][k] == av[j][k])
 			{
                 if (av[i][k] == '\0')
-					return (0);
+					errorhandling(0, 0);
                 k++;
             }
 			j++;
@@ -83,49 +83,10 @@ void	free_stack(stack **lst)
 	*lst = NULL;
 }
 
-void	error(stack **stack_a, stack **stack_b)
+void	errorhandling(stack **stack_a, stack **stack_b)
 {
-	if (stack_a == 0 || *stack_a != 0)
-		free_stack(stack_a);
-	if (stack_b == 0 || *stack_b != 0)
-		free_stack(stack_b);
+	free_stack(stack_a);
+	free_stack(stack_b);
 	write(2, "Error\n", 6);
 	exit (1);
-}
-
-void	ft_lstclear(stack **lst)
-{
-	stack *tmp;
-
-	if (!lst || !(*lst))
-		return ;
-	while (*lst)
-	{
-		tmp = (*lst)->next;
-		free(*lst);
-		*lst = tmp;
-	}
-	*lst = NULL;
-}
-
-
-
-int	ft_atoi(char *str)
-{
-	int	res;
-	int	sign;
-
-	res = 0;
-	sign = 1;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign *= -1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-		res = (res * 10) + (*str++ - '0');
-	return (res * sign);
 }
