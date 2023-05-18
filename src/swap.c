@@ -14,7 +14,7 @@
 
 void	swap(stack *stack)
 {
-	int tmp;
+	int	tmp;
 
 	if (stack == NULL || stack->next == NULL)
 		return ;

@@ -38,7 +38,7 @@ stack	*fill_stack_values(int ac, char **av)
 long int	ft_atoi(char *str)
 {
 	long int	res;
-	int	sign;
+	int			sign;
 
 	res = 0;
 	sign = 1;
@@ -58,7 +58,7 @@ long int	ft_atoi(char *str)
 
 int	stack_size(stack *stack)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!stack)

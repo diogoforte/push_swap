@@ -47,7 +47,7 @@ stack	*ft_lstbeforelast(stack *lst)
 
 void	ft_lstclear(stack **lst)
 {
-	stack *tmp;
+	stack	*tmp;
 
 	if (!lst || !(*lst))
 		return ;

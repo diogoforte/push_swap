@@ -35,6 +35,7 @@ int	main(int ac, char **av)
 {
 	stack	*stack_a;
 	stack	*stack_b;
+
 	check_input(ac, av);
 	stack_a = fill_stack_values(ac, av);
 	stack_b = NULL;

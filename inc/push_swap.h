@@ -58,6 +58,6 @@ void			sb(stack **stack_b);
 void			ss(stack **stack_a, stack **stack_b);
 
 void			radix(stack** stack_a, stack** stack_b);
-int				getMaxBits(stack* stack_a);
+int				getmaxbits(stack* stack_a);
 
 #endif
