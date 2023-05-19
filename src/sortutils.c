@@ -12,6 +12,57 @@
 
 #include "push_swap.h"
 
+int	getmaxbits(t_stack *stack_a)
+{
+	int		maxbits;
+	int		maxnum;
+	int		maxbitshold;
+	t_stack	*temp;
+
+	maxbitshold = 0;
+	temp = stack_a;
+	while (temp)
+	{
+		maxnum = absolute(temp->value);
+		maxbits = 0;
+		while (maxnum)
+		{
+			maxbits++;
+			maxnum >>= 1;
+		}
+		if (temp->value < 0)
+			maxbits++;
+		if (maxbitshold < maxbits)
+			maxbitshold = maxbits;
+		temp = temp->next;
+	}
+	return (maxbitshold);
+}
+
+void	push_negatives_to_top(t_stack **stack_a)
+{
+	t_stack		*temp;
+	int			rotations;
+	int			min_negative;
+
+	temp = *stack_a;
+	rotations = 0;
+	min_negative = 0;
+	while (temp)
+	{
+		if (temp->value < 0 && temp->value < min_negative)
+		{
+			min_negative = temp->value;
+			break ;
+		}
+		rotations++;
+		temp = temp->next;
+	}
+	while (rotations--)
+		ra(stack_a);
+}
+
+
 int	absolute(int n)
 {
 	if (n < 0)
