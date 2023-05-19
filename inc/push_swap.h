@@ -61,6 +61,7 @@ int				getmaxbits(t_stack *stack_a);
 void			push_negatives_to_top(t_stack **stack_a);
 void			push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size);
 int				absolute(int n);
+int				is_rsorted(t_stack *stack);
 
-int get_rotate(t_stack *stack, int bit);
+
 #endif

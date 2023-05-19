@@ -17,9 +17,23 @@ int	is_sorted(t_stack *stack)
 	if (!stack)
 		return (1);
 
-	while (stack->next != NULL)
+	while (stack->next)
 	{
 		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
+int	is_rsorted(t_stack *stack)
+{
+	if (!stack)
+		return (1);
+
+	while (stack->next)
+	{
+		if (stack->value < stack->next->value)
 			return (0);
 		stack = stack->next;
 	}
