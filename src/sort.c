@@ -39,44 +39,58 @@ int	getmaxbits(t_stack *stack_a)
 	return (maxbitshold);
 }
 
+void	process_stack_a(t_stack **stack_a, t_stack **stack_b, int bit)
+{
+	int	counter;
+	int	size;
+
+	counter = 0;
+	size = stack_size(*stack_a);
+	while (counter < size && *stack_a)
+	{
+		if (is_sorted(*stack_a) && is_rsorted(*stack_b))
+			while (*stack_b)
+				pa(stack_a, stack_b);
+		else if (((*stack_a)->value >> bit) & 1)
+			ra(stack_a);
+		else
+			pb(stack_a, stack_b);
+		counter++;
+	}
+}
+
+void	process_stack_b(t_stack **stack_a, t_stack **stack_b, int bit)
+{
+	int	counter;
+	int	size;
+
+	counter = 0;
+	size = stack_size(*stack_b);
+	while (counter < size && *stack_b)
+	{
+		if (((*stack_b)->value >> bit) & 1)
+			pa(stack_a, stack_b);
+		else if (!is_sorted(*stack_a))
+			rb(stack_b);
+		else
+			while (*stack_b)
+				pa(stack_a, stack_b);
+		counter++;
+	}
+}
+
 void	radix(t_stack **stack_a, t_stack **stack_b)
 {
 	int	maxbits;
 	int	bit;
-	int	counter;
-	int	size;
 
 	maxbits = getmaxbits(*stack_a);
 	bit = 0;
 	while (bit < maxbits)
 	{
-		counter = 0;
-		size = stack_size(*stack_a);
-		while (counter < size && *stack_a)
-		{
-			if (is_sorted(*stack_a) && is_rsorted(*stack_b))
-				while (*stack_b)
-					pa(stack_a, stack_b);
-			else if (((*stack_a)->value >> bit) & 1)
-				ra(stack_a);
-			else
-				pb(stack_a, stack_b);
-			counter++;
-		}
+		process_stack_a(stack_a, stack_b, bit);
 		bit++;
-		size = stack_size(*stack_b);
-		counter = 0;
-		while (counter < size && *stack_b)
-		{
-			if (((*stack_b)->value >> bit) & 1)
-				pa(stack_a, stack_b);
-			else if (!is_sorted(*stack_a))
-				rb(stack_b);
-			else
-				while (*stack_b)
-					pa(stack_a, stack_b);
-			counter++;
-		}
+		process_stack_b(stack_a, stack_b, bit);
 	}
 }
 
@@ -101,11 +115,4 @@ void	push_negatives_to_top(t_stack **stack_a)
 	}
 	while (rotations--)
 		ra(stack_a);
-}
-
-int	absolute(int n)
-{
-	if (n < 0)
-		return (-n);
-	return (n);
 }

@@ -12,34 +12,6 @@
 
 #include "push_swap.h"
 
-int	is_sorted(t_stack *stack)
-{
-	if (!stack)
-		return (1);
-
-	while (stack->next)
-	{
-		if (stack->value > stack->next->value)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
-
-int	is_rsorted(t_stack *stack)
-{
-	if (!stack)
-		return (1);
-
-	while (stack->next)
-	{
-		if (stack->value < stack->next->value)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
-
 void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 {
 	if (stack_size == 2 && !is_sorted(*stack_a))

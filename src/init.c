@@ -24,7 +24,7 @@ t_stack	*fill_stack_values(int ac, char **av)
 	while (i < ac)
 	{
 		nb = ft_atoi(av[i]);
-		if (nb > INT_MAX || nb < INT_MIN)
+		if (nb > 2147483647 || nb < -2147483648)
 			errorhandling(&stack_a, 0);
 		if (i == 1)
 			stack_a = ft_lstnew(nb);

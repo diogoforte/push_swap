@@ -31,6 +31,7 @@ SRC			=	init.c				\
 				lists.c				\
 				reverse_rotate.c	\
 				swap.c				\
+				sortutils.c
 
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 

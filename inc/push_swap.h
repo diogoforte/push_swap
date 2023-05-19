@@ -13,18 +13,15 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
 # include <stdio.h>
 
-typedef struct	s_stack
+typedef struct s_stack
 {
 	int				value;
 	struct s_stack	*next;
 }				t_stack;
-
 
 int				check_input(int ac, char **av);
 int				check_num(char *av);
@@ -57,11 +54,11 @@ void			sa(t_stack **stack_a);
 void			sb(t_stack **stack_b);
 void			ss(t_stack **stack_a, t_stack **stack_b);
 void			radix(t_stack **stack_a, t_stack **stack_b);
+void			process_stack_a(t_stack **stack_a, t_stack **stack_b, int bit);
+void			process_stack_b(t_stack **stack_a, t_stack **stack_b, int bit);
 int				getmaxbits(t_stack *stack_a);
 void			push_negatives_to_top(t_stack **stack_a);
 void			push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size);
 int				absolute(int n);
 int				is_rsorted(t_stack *stack);
-
-
 #endif
