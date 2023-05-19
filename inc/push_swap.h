@@ -19,12 +19,12 @@
 # include <limits.h>
 # include <stdio.h>
 
-typedef struct s_stack
+typedef struct	s_stack
 {
 	int				value;
-	int				is_negative;
 	struct s_stack	*next;
-}	t_stack;
+}				t_stack;
+
 
 int				check_input(int ac, char **av);
 int				check_num(char *av);
@@ -61,4 +61,6 @@ int				getmaxbits(t_stack *stack_a);
 void			push_negatives_to_top(t_stack **stack_a);
 void			push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size);
 int				absolute(int n);
+
+int get_rotate(t_stack *stack, int bit);
 #endif

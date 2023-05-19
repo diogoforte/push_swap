@@ -14,23 +14,26 @@
 
 int	is_sorted(t_stack *stack)
 {
+	if (!stack)
+		return (1);
+
 	while (stack->next != NULL)
 	{
 		if (stack->value > stack->next->value)
-			return (1);
+			return (0);
 		stack = stack->next;
 	}
-	return (0);
+	return (1);
 }
 
 void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 {
-	if (stack_size == 2 && is_sorted(*stack_a))
+	if (stack_size == 2 && !is_sorted(*stack_a))
 		sa(stack_a);
-	else if (stack_size > 2 && is_sorted(*stack_a))
+	else if (stack_size > 2 && !is_sorted(*stack_a))
 	{
 		radix(stack_a, stack_b);
-		if (is_sorted(*stack_a))
+		if (!is_sorted(*stack_a))
 			push_negatives_to_top(stack_a);
 	}
 }
@@ -44,4 +47,5 @@ int	main(int ac, char **av)
 	stack_a = fill_stack_values(ac, av);
 	stack_b = NULL;
 	push_swap(&stack_a, &stack_b, stack_size(stack_a));
+	free_stack(&stack_a);
 }
