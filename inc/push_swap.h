@@ -61,4 +61,10 @@ void			push_negatives_to_top(t_stack **stack_a);
 void			push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size);
 int				absolute(int n);
 int				is_rsorted(t_stack *stack);
+void			sort3(t_stack **stack);
+void			sort5(t_stack **stack_a, t_stack **stack_b);
+int				highest_value(t_stack *stack);
+int				lowest_value(t_stack *stack);
+void			insertb(t_stack **stack_a, t_stack **stack_b);
+int				last_value(t_stack *stack);
 #endif

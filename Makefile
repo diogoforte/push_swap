@@ -27,6 +27,7 @@ SRC			=	init.c				\
 				rotate.c			\
 				input.c				\
 				push.c				\
+				sortsmall.c			\
 				sort.c				\
 				lists.c				\
 				reverse_rotate.c	\

@@ -66,3 +66,30 @@ void	process_stack_b(t_stack **stack_a, t_stack **stack_b, int bit)
 		counter++;
 	}
 }
+
+int	getmaxbits(t_stack *stack_a)
+{
+	int		maxbits;
+	int		maxnum;
+	int		maxbitshold;
+	t_stack	*temp;
+
+	maxbitshold = 0;
+	temp = stack_a;
+	while (temp)
+	{
+		maxnum = absolute(temp->value);
+		maxbits = 0;
+		while (maxnum)
+		{
+			maxbits++;
+			maxnum >>= 1;
+		}
+		if (temp->value < 0)
+			maxbits++;
+		if (maxbitshold < maxbits)
+			maxbitshold = maxbits;
+		temp = temp->next;
+	}
+	return (maxbitshold);
+}
