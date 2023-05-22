@@ -36,10 +36,7 @@ void	process_stack_a(t_stack **stack_a, t_stack **stack_b, int bit)
 	size = stack_size(*stack_a);
 	while (counter < size && *stack_a)
 	{
-		if (is_sorted(*stack_a) && is_rsorted(*stack_b))
-			while (*stack_b)
-				pa(stack_a, stack_b);
-		else if (((*stack_a)->value >> bit) & 1)
+		if (((*stack_a)->value >> bit) & 1)
 			ra(stack_a);
 		else
 			pb(stack_a, stack_b);
