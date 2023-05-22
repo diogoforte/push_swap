@@ -12,29 +12,24 @@
 
 #include "push_swap.h"
 
-int	check_input(int ac, char **av)
+int	check_input(char **av)
 {
-	if (check_duplicates (ac, av))
+	av++;
+	while (*av)
 	{
+		if (!check_num(*av))
+			errorhandling(0, 0);
 		av++;
-		while (*av)
-		{
-			if (!check_num(*av))
-				errorhandling(0, 0);
-			av++;
-		}
 	}
-	else
-		return (0);
 	return (1);
 }
 
 int	check_num(char *av)
 {
+	if (av[0] == 45 || av[0] == 43)
+		av++;
 	while (*av)
 	{
-		if (av[0] == 45)
-			av++;
 		if (*av < 48 || *av > 57)
 			return (0);
 		av++;
@@ -42,30 +37,20 @@ int	check_num(char *av)
 	return (1);
 }
 
-int	check_duplicates(int ac, char **av)
+int	check_duplicates(t_stack *lst, int num)
 {
-	int	i;
-	int	j;
-	int	k;
+	t_stack	*temp;
 
-	i = 1;
-	while (i < ac)
+	if (!lst)
+		return (num);
+	temp = lst;
+	while (temp)
 	{
-		j = i + 1;
-		while (j < ac)
-		{
-			k = 0;
-			while (av[i][k] == av[j][k])
-			{
-				if (av[i][k] == '\0')
-					errorhandling(0, 0);
-				k++;
-			}
-			j++;
-		}
-		i++;
+		if (num == temp->value)
+			errorhandling(&lst, 0);
+		temp = temp->next;
 	}
-	return (1);
+	return (num);
 }
 
 void	free_stack(t_stack **lst)

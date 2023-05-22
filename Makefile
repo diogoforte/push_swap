@@ -27,11 +27,13 @@ SRC			=	init.c				\
 				rotate.c			\
 				input.c				\
 				push.c				\
-				sortsmall.c			\
+				sort3.c				\
+				sort5.c				\
 				sort.c				\
 				lists.c				\
 				reverse_rotate.c	\
 				swap.c				\
+				wins.c				\
 				sortutils.c
 
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))

@@ -21,11 +21,7 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 	else if ((stack_size <= 5) && !is_sorted(*stack_a))
 		sort5(stack_a, stack_b);
 	else if (!is_sorted(*stack_a))
-	{
 		radix(stack_a, stack_b);
-		if (!is_sorted(*stack_a))
-			push_negatives_to_top(stack_a);
-	}
 }
 
 int	main(int ac, char **av)
@@ -33,9 +29,10 @@ int	main(int ac, char **av)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	check_input(ac, av);
+	check_input(av);
 	stack_a = fill_stack_values(ac, av);
 	stack_b = NULL;
+	new_value(&stack_a);
 	push_swap(&stack_a, &stack_b, stack_size(stack_a));
 	free_stack(&stack_a);
 }

@@ -75,7 +75,7 @@ int	getmaxbits(t_stack *stack_a)
 	temp = stack_a;
 	while (temp)
 	{
-		maxnum = absolute(temp->value);
+		maxnum = temp->value;
 		maxbits = 0;
 		while (maxnum)
 		{

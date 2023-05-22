@@ -12,36 +12,6 @@
 
 #include "push_swap.h"
 
-void	push_negatives_to_top(t_stack **stack_a)
-{
-	t_stack		*temp;
-	int			rotations;
-	int			min_negative;
-
-	temp = *stack_a;
-	rotations = 0;
-	min_negative = 0;
-	while (temp)
-	{
-		if (temp->value < 0 && temp->value < min_negative)
-		{
-			min_negative = temp->value;
-			break ;
-		}
-		rotations++;
-		temp = temp->next;
-	}
-	while (rotations--)
-		ra(stack_a);
-}
-
-int	absolute(int n)
-{
-	if (n < 0)
-		return (-n);
-	return (n);
-}
-
 int	is_sorted(t_stack *stack)
 {
 	if (!stack)
@@ -55,17 +25,21 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-int	is_rsorted(t_stack *stack)
+int	lowest_pos(t_stack *stack)
 {
-	if (!stack)
-		return (1);
-	while (stack->next)
+	int	value;
+	int	min;
+
+	if (stack == NULL)
+		return (0);
+	value = stack->value;
+	min = lowest_value(stack);
+	while (stack && stack->value != min)
 	{
-		if (stack->value < stack->next->value)
-			return (0);
+		value++;
 		stack = stack->next;
 	}
-	return (1);
+	return (value);
 }
 
 int	last_value(t_stack *stack)
@@ -77,6 +51,37 @@ int	last_value(t_stack *stack)
 	while (stack)
 	{
 		if (stack->next == 0)
+			value = stack->value;
+		stack = stack->next;
+	}
+	return (value);
+}
+
+int	highest_value(t_stack *stack)
+{
+	int		value;
+
+	if (stack == NULL)
+		return (0);
+	value = stack->value;
+	while (stack)
+	{
+		if (stack->value > value)
+			value = stack->value;
+		stack = stack->next;
+	}
+	return (value);
+}
+
+int	lowest_value(t_stack *stack)
+{
+	int		value;
+
+	if (stack == NULL)
+		return (0);
+	while (stack)
+	{
+		if (stack->value < value)
 			value = stack->value;
 		stack = stack->next;
 	}

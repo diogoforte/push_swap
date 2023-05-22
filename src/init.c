@@ -23,7 +23,7 @@ t_stack	*fill_stack_values(int ac, char **av)
 	i = 1;
 	while (i < ac)
 	{
-		nb = ft_atoi(av[i]);
+		nb = check_duplicates(stack_a, ft_atoi(av[i]));
 		if (nb > 2147483647 || nb < -2147483648)
 			errorhandling(&stack_a, 0);
 		if (i == 1)

@@ -23,9 +23,9 @@ typedef struct s_stack
 	struct s_stack	*next;
 }				t_stack;
 
-int				check_input(int ac, char **av);
+int				check_input(char **av);
 int				check_num(char *av);
-int				check_duplicates(int ac, char **av);
+int				check_duplicates(t_stack *lst, int num);
 long int		ft_atoi(char *str);
 void			ft_lstclear(t_stack **t_stack);
 t_stack			*fill_stack_values(int ac, char **av);
@@ -57,14 +57,14 @@ void			radix(t_stack **stack_a, t_stack **stack_b);
 void			process_stack_a(t_stack **stack_a, t_stack **stack_b, int bit);
 void			process_stack_b(t_stack **stack_a, t_stack **stack_b, int bit);
 int				getmaxbits(t_stack *stack_a);
-void			push_negatives_to_top(t_stack **stack_a);
 void			push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size);
-int				absolute(int n);
-int				is_rsorted(t_stack *stack);
 void			sort3(t_stack **stack);
 void			sort5(t_stack **stack_a, t_stack **stack_b);
 int				highest_value(t_stack *stack);
 int				lowest_value(t_stack *stack);
 void			insertb(t_stack **stack_a, t_stack **stack_b);
 int				last_value(t_stack *stack);
+int				lowest_pos(t_stack *stack);
+int				count_wins(t_stack	*lst, int compare);
+void			new_value(t_stack	**lst);
 #endif
