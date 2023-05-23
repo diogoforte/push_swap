@@ -28,13 +28,10 @@ int	is_sorted(t_stack *stack)
 int	lowest_pos(t_stack *stack)
 {
 	int	value;
-	int	min;
 
 	if (stack == NULL)
 		return (0);
-	value = stack->value;
-	min = lowest_value(stack);
-	while (stack && stack->value != min)
+	while (stack && stack->value != lowest_value(stack))
 	{
 		value++;
 		stack = stack->next;

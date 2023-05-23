@@ -6,7 +6,7 @@
 /*   By: dinunes- <dinunes-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 23:19:00 by dinunes-          #+#    #+#             */
-/*   Updated: 2023/05/22 23:24:35 by dinunes-         ###   ########.fr       */
+/*   Updated: 2023/05/23 02:35:02 by dinunes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ void	new_value(t_stack	**lst)
 {
 	t_stack	*temp;
 	t_stack	*new;
-	int		i;
 
-	i = 0;
 	new = NULL;
 	temp = *lst;
 	while (temp)
