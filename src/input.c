@@ -26,7 +26,7 @@ int	check_input(char **av)
 
 int	check_num(char *av)
 {
-	if (av[0] == 45 || av[0] == 43)
+	if (*av == 45 || *av == 43)
 		av++;
 	while (*av)
 	{
