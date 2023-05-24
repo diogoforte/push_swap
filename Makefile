@@ -54,6 +54,7 @@ $(OBJ_PATH):
 	@mkdir $(OBJ_PATH)
 
 $(NAME): $(OBJS)
+
 	@echo "Compiling \033[0;91m$(NAME)\033[0;0m..."
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(INC)
 	@echo "\033[0;91m$(NAME) \033[0;0mready."

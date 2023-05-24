@@ -25,7 +25,7 @@ typedef struct s_stack
 
 int				check_input(char **av);
 int				check_num(char *av);
-int				check_duplicates(t_stack *lst, int num);
+void			check_duplicates(t_stack *lst, int num);
 long int		ft_atoi(char *str);
 void			ft_lstclear(t_stack **t_stack);
 t_stack			*fill_stack_values(int ac, char **av);

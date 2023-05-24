@@ -29,6 +29,7 @@ int	lowest_pos(t_stack *stack)
 {
 	int	value;
 
+	value = 0;
 	if (stack == NULL)
 		return (0);
 	while (stack && stack->value != lowest_value(stack))

@@ -37,12 +37,12 @@ int	check_num(char *av)
 	return (1);
 }
 
-int	check_duplicates(t_stack *lst, int num)
+void	check_duplicates(t_stack *lst, int num)
 {
 	t_stack	*temp;
 
 	if (!lst)
-		return (num);
+		return ;
 	temp = lst;
 	while (temp)
 	{
@@ -50,7 +50,6 @@ int	check_duplicates(t_stack *lst, int num)
 			errorhandling(&lst, 0);
 		temp = temp->next;
 	}
-	return (num);
 }
 
 void	free_stack(t_stack **lst)

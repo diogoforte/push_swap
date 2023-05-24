@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 	check_input(av);
 	stack_a = fill_stack_values(ac, av);
 	stack_b = NULL;
-	new_value(&stack_a);
+	//new_value(&stack_a);
 	push_swap(&stack_a, &stack_b, stack_size(stack_a));
 	free_stack(&stack_a);
 }
