@@ -12,8 +12,13 @@
 
 #include "push_swap.h"
 
-int	check_input(char **av)
+int	check_input(int ac, char **av)
 {
+	while (av[--ac] && ac > 0)
+	{
+		if (!av[ac][0])
+			errorhandling(0, 0);
+	}
 	av++;
 	while (*av)
 	{

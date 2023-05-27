@@ -23,7 +23,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 }				t_stack;
 
-int				check_input(char **av);
+int				check_input(int ac, char **av);
 int				check_num(char *av);
 void			check_duplicates(t_stack *lst, int num);
 long int		ft_atoi(char *str);
