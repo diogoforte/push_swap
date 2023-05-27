@@ -11,52 +11,51 @@
 # **************************************************************************** #
 
 #Program name
-NAME	= push_swap
+NAME = push_swap
 
 # Compiler
-CC		= cc
-CFLAGS	= -Werror -Wextra -Wall
+CC = cc
+CFLAGS = -Werror -Wextra -Wall
 
 # Includes
-INC			=	-I ./inc/
+INC = -I ./inc/
 
 # Sources
-SRC_PATH	=	src/
-SRC			=	init.c				\
-				main.c				\
-				rotate.c			\
-				input.c				\
-				push.c				\
-				sort3.c				\
-				sort5.c				\
-				sort.c				\
-				lists.c				\
-				reverse_rotate.c	\
-				swap.c				\
-				wins.c				\
-				sortutils.c
+SRC_PATH = src/
+SRC = init.c \
+main.c \
+rotate.c \
+input.c \
+push.c \
+sort3.c \
+sort5.c \
+sort.c \
+lists.c \
+reverse_rotate.c \
+swap.c \
+wins.c \
+sortutils.c
 
-SRCS		= $(addprefix $(SRC_PATH), $(SRC))
+SRCS = $(addprefix $(SRC_PATH), $(SRC))
 
 # Objects
-OBJ_PATH	= obj/
-OBJ			= $(SRC:.c=.o)
-OBJS		= $(addprefix $(OBJ_PATH), $(OBJ))
+OBJ_PATH = obj/
+OBJ = $(SRC:.c=.o)
+OBJS = $(addprefix $(OBJ_PATH), $(OBJ))
 
 all: $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
+	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
-$(OBJS): $(OBJ_PATH)
+$(OBJS): | $(OBJ_PATH)
 
 $(OBJ_PATH):
-	@mkdir $(OBJ_PATH)
+	@mkdir -p $(OBJ_PATH)
 
 $(NAME): $(OBJS)
-
 	@echo "Compiling \033[0;91m$(NAME)\033[0;0m..."
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(INC)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 	@echo "\033[0;91m$(NAME) \033[0;0mready."
 
 bonus: all
