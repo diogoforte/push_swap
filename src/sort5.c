@@ -6,7 +6,7 @@
 /*   By: dinunes- <dinunes-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 23:17:53 by dinunes-          #+#    #+#             */
-/*   Updated: 2023/05/23 02:31:46 by dinunes-         ###   ########.fr       */
+/*   Updated: 2023/05/28 04:28:14 by dinunes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	sort5(t_stack **stack_a, t_stack **stack_b)
 			rra(stack_a);
 	}
 	sort3(stack_a);
-	pa(stack_a, stack_b);
-	pa(stack_a, stack_b);
+	while (*stack_b)
+		pa(stack_a, stack_b);
 }
